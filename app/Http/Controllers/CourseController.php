@@ -14,6 +14,13 @@ class CourseController extends Controller
     {
         $this->middleware('auth');
     }
+    
+    private $rules = [
+    		'name'=>'required',
+    		'code'=>'required|unique:courses',
+    		'capacity'=>'required|numeric',
+    		'lecturer'=>'required'
+    	];
 
     /**
      * Show the application dashboard.
@@ -37,12 +44,7 @@ class CourseController extends Controller
     }
     public function store(Request $request)
     {
-    	$this->validate($request,[
-    		'name'=>'required',
-    		'code'=>'required|unique:courses',
-    		'capacity'=>'required|numeric',
-    		'lecturer'=>'required'
-    	]);
+    	$this->validate($request, $this->rules);
     	 $input = $request->all();
     	 // dd($request->all());
 	    course::create($input);
@@ -50,5 +52,34 @@ class CourseController extends Controller
 	    Session::flash('flash_message', 'Course successfully added!');
 
 	    return redirect()->back();
+    }
+    public function edit(course $course)
+    {
+    	$lecturers = [
+    	['id'=>1,'name'=>'F. Muthengi','department'=>'Computer Science'],
+    	['id'=>2,'name'=>'E. Gakii','department'=>'Computer Science']
+    	];
+    	$lecs= json_decode(json_encode($lecturers), FALSE);;
+    	return view('course.edit',['course'=>$course,'lecturers'=>$lecs]);
+    }
+    public function update(course $course, Request $request)
+    {
+    	// dd($this->rules);
+    	$this->rules['code'].=',code,'.$course->code.',code';
+    	$this->validate($request,$this->rules);
+
+    	$course->fill($request->all())->save();
+    	Session::flash('flash_message', '	Course successfully updated!');
+
+    	return redirect('course');
+
+    	
+    }
+    public function delete(course $course)
+    {
+    	$course->delete();
+    	Session::flash('flash_message', '	Course successfully Deleted!');
+
+    	return redirect('course');
     }
 }

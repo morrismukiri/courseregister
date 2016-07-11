@@ -87,6 +87,14 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
         $('.dt').DataTable();
+        $('.delete').on('click',function (e) {
+            var confirmed =confirm("Are you sure?");
+            if(!confirmed){
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        });
+
                     
     </script>
 </body>

@@ -18,6 +18,10 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
 Route::get('/course','CourseController@index');
 Route::get('/course/add','CourseController@add');
 Route::post('/course/add','CourseController@store');
+Route::get('/course/edit/{course}','CourseController@edit');
+Route::post('/course/edit/{course}','CourseController@update');
+Route::get('/course/delete/{course}','CourseController@delete');

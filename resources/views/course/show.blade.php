@@ -25,8 +25,8 @@
             			<td>{{ $course->lecturer }}</td>
             			<td>{{ $course->capacity }}</td>
             			<td>
-            			<a href="/edit/{{ $course->id }}" class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i> Edit</a> |
-            			<a href="/delete/{{ $course->id }}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            			<a href="course/edit/{{ $course->id }}" class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i> Edit</a> |
+            			<a href="course/delete/{{ $course->id }}" class="btn btn-danger delete" ><i class="glyphicon glyphicon-trash"></i> Delete</a>
             			 </td>
             		</tr>
             		
@@ -36,5 +36,4 @@
         </div>
     </div>
 </div>
-
 @endsection
