@@ -55,8 +55,8 @@
                         <li><a href="{{ url('/course') }}">Courses</a></li>
                         <li><a href="{{ url('/lecturer') }}">Lecturers</a></li>
                         <li><a href="{{ url('/students') }}">Students</a></li>
-                    @elseif(Auth::user() && Auth::user()->role=='lecturers')
-                        <li><a href="{{ url('/lecturer/courses') }}">My Courses</a></li>
+                    @elseif(Auth::user() && Auth::user()->role=='lecturer')
+                        <li><a href="{{ url('/lecturer/courses/'.Auth::user()->id) }}">My Courses</a></li>
                     @elseif(Auth::user() && Auth::user()->role=='student')
                         <li><a href="{{ url('/student/courses') }}">My Courses</a></li>
                     @endif

@@ -26,4 +26,10 @@ Route::get('/course/edit/{course}','CourseController@edit');
 Route::post('/course/edit/{course}','CourseController@update');
 Route::get('/course/delete/{course}','CourseController@delete');
 
-Route::get('lecturers','LecturersController@index');
+Route::get('lecturer','LecturersController@index');
+Route::get('lecturer/courses/{lecturer}','LecturersController@courses');
+Route::get('lecturer/edit/{lecturer}','LecturersController@edit');
+Route::get('lecturer/delete/{lecturer}','LecturersController@delete');
+Route::post('lecturer/edit/{lecturer}','LecturersController@update');
+Route::get('lecturer/add','LecturersController@add');
+Route::post('lecturer/add','LecturersController@store');
