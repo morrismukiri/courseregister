@@ -23,7 +23,7 @@
                         <td>{{ $student->registration }}</td>
             			<td>{{ $student->name }}</td>
             			<td>{{ $student->department }}</td>
-            			<td>{{ $student->courses->count() }}</td>
+            			<td>{{ $student->RegisteredCourses->count() }}</td>
             			
             			<td>
             			<a href="student/edit/{{ $student->id }}" class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i> Edit</a> |

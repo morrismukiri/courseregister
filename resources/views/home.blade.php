@@ -8,7 +8,8 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                  <h3>  You are logged in!</h3>
+                  <h5>Select a function from the top menu</h5>
                 </div>
             </div>
         </div>

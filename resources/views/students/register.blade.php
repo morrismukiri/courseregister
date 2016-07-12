@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-        <h2>Courses I've enrolled to</h2>
+        <h2>Select</h2>
         <hr>
             <table class="table table-condensed table-hover table-striped dt" id="students">
             	<thead>
@@ -13,20 +13,19 @@
                         <th>Name</th>
                         <th>Lecturer</th>
             			<th>Capacity</th>
+            			<th>Enroll</th>
             			
             		</tr>
             	</thead>
             	<tbody>
-            	@foreach($student->RegisteredCourses as $course)
-                    <tr>
-                        <td>{{ $course->Course->code }}</td>
-                        <td>{{ $course->Course->name }}</td>
-                        <td>{{ $course->Course->Lecturer->name }}</td>
-                        <td>{{ $course->Course->capacity }}</td>
-            			
-            			
+            	@foreach($courses as $course)
+            		<tr>
+                        <td>{{ $course->code }}</td>
+                        <td>{{ $course->name }}</td>
+                        <td>{{ $course->Lecturer->name }}</td>
+                        <td>{{ $course->capacity }}</td>
+                        <td><a href="{{ url('/courses/register/'. Auth::user()->id.'/'. $course->id) }}" class="btn btn-success"> <i class="glyphicon glyphicon-ok"> Enroll</a></td>
             		</tr>
-            		
             	@endforeach
             	</tbody>
             </table>

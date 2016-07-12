@@ -18,4 +18,8 @@ class course extends Model
     {
     	return $this->belongsTo(\App\User::class);
     }
+    public function Registered()
+    {
+        return $this->hasMany(\App\CourseRegister::class,'course','id');
+    }
 }

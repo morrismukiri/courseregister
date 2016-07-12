@@ -58,7 +58,8 @@
                     @elseif(Auth::user() && Auth::user()->role=='lecturer')
                         <li><a href="{{ url('/lecturer/courses/'.Auth::user()->id) }}">My Courses</a></li>
                     @elseif(Auth::user() && Auth::user()->role=='student')
-                        <li><a href="{{ url('/student/courses') }}">My Courses</a></li>
+                        <li><a href="{{ url('/student/courses/'.Auth::user()->id) }}">My Courses</a></li>
+                        <li><a href="{{ url('/courses/register') }}">All Courses</a></li>
                     @endif
 
                 </ul>

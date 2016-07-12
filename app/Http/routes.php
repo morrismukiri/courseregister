@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@welcome');
 
 Route::get('/course','CourseController@index');
 Route::get('/course/add','CourseController@add');
@@ -41,3 +40,6 @@ Route::get('student/delete/{student}','StudentsController@delete');
 Route::post('student/edit/{student}','StudentsController@update');
 Route::get('student/add','StudentsController@add');
 Route::post('student/add','StudentsController@store');
+
+Route::get('courses/register','StudentsController@listCourses');
+Route::get('courses/register/{user}/{course}','StudentsController@register');

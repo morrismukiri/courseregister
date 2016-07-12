@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\course;
+use App\CourseRegister;
 use Session;
+use Auth;
 class StudentsController extends Controller
 {
 
@@ -77,6 +80,22 @@ class StudentsController extends Controller
     }
     public function courses(User $student)
     {
+        // dd($student->RegisteredCourses);
     	return view('students.courses',['student'=>$student]);
+    }
+
+    public function listCourses()
+    {
+        $courses= course::all();
+        return view('students.register',['courses'=>$courses]);
+    }
+    public function register($student, $course)
+    {
+        // dd(Auth::user()->id);
+    	CourseRegister::insert([
+            'student'=>$student,
+            'course'=>$course
+            ]);
+    	return redirect('/student/courses/'.Auth::user()->id);
     }
 }
