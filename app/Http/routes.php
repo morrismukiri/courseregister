@@ -33,3 +33,11 @@ Route::get('lecturer/delete/{lecturer}','LecturersController@delete');
 Route::post('lecturer/edit/{lecturer}','LecturersController@update');
 Route::get('lecturer/add','LecturersController@add');
 Route::post('lecturer/add','LecturersController@store');
+
+Route::get('student','StudentsController@index');
+Route::get('student/courses/{student}','StudentsController@courses');
+Route::get('student/edit/{student}','StudentsController@edit');
+Route::get('student/delete/{student}','StudentsController@delete');
+Route::post('student/edit/{student}','StudentsController@update');
+Route::get('student/add','StudentsController@add');
+Route::post('student/add','StudentsController@store');

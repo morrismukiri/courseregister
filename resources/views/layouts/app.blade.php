@@ -54,7 +54,7 @@
                     @if(Auth::user() && Auth::user()->role=='admin')
                         <li><a href="{{ url('/course') }}">Courses</a></li>
                         <li><a href="{{ url('/lecturer') }}">Lecturers</a></li>
-                        <li><a href="{{ url('/students') }}">Students</a></li>
+                        <li><a href="{{ url('/student') }}">Students</a></li>
                     @elseif(Auth::user() && Auth::user()->role=='lecturer')
                         <li><a href="{{ url('/lecturer/courses/'.Auth::user()->id) }}">My Courses</a></li>
                     @elseif(Auth::user() && Auth::user()->role=='student')
@@ -90,7 +90,13 @@
         </div>
     @endif
     @yield('content')
-
+    <div class="footer container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="centre-block">Made with <3 @Chuka</div>
+            </div>
+        </div>
+    </div>
     <!-- JavaScripts -->
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
