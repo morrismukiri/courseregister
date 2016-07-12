@@ -25,3 +25,5 @@ Route::post('/course/add','CourseController@store');
 Route::get('/course/edit/{course}','CourseController@edit');
 Route::post('/course/edit/{course}','CourseController@update');
 Route::get('/course/delete/{course}','CourseController@delete');
+
+Route::get('lecturers','LecturersController@index');

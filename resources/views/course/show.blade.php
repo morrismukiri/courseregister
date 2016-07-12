@@ -22,7 +22,7 @@
             		<tr>
             			<td>{{ $course->name }}</td>
             			<td>{{ $course->code }}</td>
-            			<td>{{ $course->lecturer }}</td>
+            			<td>{{ $course->Lecturer->name }}</td>
             			<td>{{ $course->capacity }}</td>
             			<td>
             			<a href="course/edit/{{ $course->id }}" class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i> Edit</a> |

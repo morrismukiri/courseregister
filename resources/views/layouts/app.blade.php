@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-paper.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('DataTables/datatables.min.css') }}"/>
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -49,7 +51,16 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/course') }}">Courses</a></li>
+                    @if(Auth::user() && Auth::user()->role=='admin')
+                        <li><a href="{{ url('/course') }}">Courses</a></li>
+                        <li><a href="{{ url('/lecturer') }}">Lecturers</a></li>
+                        <li><a href="{{ url('/students') }}">Students</a></li>
+                    @elseif(Auth::user() && Auth::user()->role=='lecturers')
+                        <li><a href="{{ url('/lecturer/courses') }}">My Courses</a></li>
+                    @elseif(Auth::user() && Auth::user()->role=='student')
+                        <li><a href="{{ url('/student/courses') }}">My Courses</a></li>
+                    @endif
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -83,6 +94,7 @@
     <!-- JavaScripts -->
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('js/bootstrap-select.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('DataTables/datatables.min.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\course;
 use Session;
+use App\User;
 
 class CourseController extends Controller
 {
@@ -29,18 +30,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-    	$courses = course::all();
+    	$courses = course::all();//Ensure Lecturer sub-object is Capital Lecturer
+    	
         return view('course.show',['courses'=>$courses]);
-        // return "courses below";
+       
     }
     public function add()
     {
-    	$lecturers = [
-    	['id'=>1,'name'=>'F. Muthengi','department'=>'Computer Science'],
-    	['id'=>2,'name'=>'E. Gakii','department'=>'Computer Science']
-    	];
-    	$lecs= json_decode(json_encode($lecturers), FALSE);;
-    	return view('course.form',['lecturers'=>$lecs]);
+    	
+    	$lecturers= User::where('role','lecturer')->where('status',1)->get();
+    	return view('course.form',['lecturers'=>$lecturers]);
     }
     public function store(Request $request)
     {
@@ -55,12 +54,8 @@ class CourseController extends Controller
     }
     public function edit(course $course)
     {
-    	$lecturers = [
-    	['id'=>1,'name'=>'F. Muthengi','department'=>'Computer Science'],
-    	['id'=>2,'name'=>'E. Gakii','department'=>'Computer Science']
-    	];
-    	$lecs= json_decode(json_encode($lecturers), FALSE);;
-    	return view('course.edit',['course'=>$course,'lecturers'=>$lecs]);
+    	$lecturers= User::where('role','lecturer')->where('status',1)->get();
+    	return view('course.edit',['course'=>$course,'lecturers'=>$lecturers]);
     }
     public function update(course $course, Request $request)
     {
@@ -69,7 +64,7 @@ class CourseController extends Controller
     	$this->validate($request,$this->rules);
 
     	$course->fill($request->all())->save();
-    	Session::flash('flash_message', '	Course successfully updated!');
+    	Session::flash('flash_message', 'Course successfully updated!');
 
     	return redirect('course');
 

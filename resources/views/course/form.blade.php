@@ -54,7 +54,7 @@
                             <label for="lecturer" class="col-md-4 control-label">Lecturer</label>
 
                             <div class="col-md-6">
-                                <select name="lecturer" id="lecturer" class="form-control">
+                                <select name="lecturer" id="lecturer" class="form-control selectpicker" data-live-search="true">
 										@foreach($lecturers as $lecturer)
 												<option value="{{ $lecturer->id }}">{{ $lecturer->name }}</option>
 										@endforeach
